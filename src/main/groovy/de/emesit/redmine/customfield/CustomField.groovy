@@ -131,26 +131,32 @@ class CustomField {
         builder.custom_field(id:id, name:name) {
             'type'         ("${type}")
             'format'       ("${fieldFormat}")
+            'is_required'  ("${isRequired}")
             if (fieldFormat == 'list') {
-                'multiple'     ("${multiple}")
+                if (multiple!=null) {
+                    'multiple'     ("$multiple}")
+                }
                 'possible_values'() {
                     for (String nextPossibleValue : possibleValues(possibleValues)) {
                         'value'(nextPossibleValue)
                     }
                 }
-                'is_required'  ("${isRequired}")
                 
             } else if (fieldFormat == 'bool') {
-                'default_value'("${defaultValue}")
-                'is_required'  ("${isRequired}")
+                if (defaultValue!=null) {
+                    'default_value'("${defaultValue}")
+                }
                 
             } else {
                 
                 'min_length'   ("${minLength}")
                 'max_length'   ("${maxLength}")
-                'regexp'       ("${regexp}")
-                'default_value'("${defaultValue}")
-                'is_required'  ("${isRequired}")
+                if (regexp!=null) {
+                    'regexp'("${regexp}")
+                }
+                if (defaultValue!=null) {
+                    'default_value'("${defaultValue}")
+                }
             }
 //            'is_for_all'       ("${isForAll}")
 //            'is_filter'        ("${isFilter}")
