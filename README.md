@@ -33,7 +33,7 @@ Additionally the following optional parameters are supported
 
 
 To test your webapp, call your server and provide the necessary parameters e.g.: 
-http://localhost:8080/redmine-customfield-info/custom_fields?key=1234567890123456789012345678901234567890&location=production&type=TimeEntryCustomField
+* http://localhost:8080/redmine-customfield-info/custom_fields?key=1234567890123456789012345678901234567890&location=production&type=TimeEntryCustomField
 
 
 
