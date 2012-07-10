@@ -134,7 +134,7 @@ class CustomField {
             'is_required'  ("${isRequired}")
             if (fieldFormat == 'list') {
                 if (multiple!=null) {
-                    'multiple'     ("$multiple}")
+                    'multiple'     ("${multiple}")
                 }
                 'possible_values'() {
                     for (String nextPossibleValue : possibleValues(possibleValues)) {
