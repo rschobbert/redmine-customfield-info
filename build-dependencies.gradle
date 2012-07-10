@@ -2,7 +2,7 @@ dependencies {
     groovy           group:'org.codehaus.groovy', name:'groovy'      , version:'1.7.3'
     compile          group:'org.slf4j'          , name:'slf4j-api'   , version:'1.6.6'
     
-    runtime          group:'ch.qos.logback'     , name:'logback'     , version:'1.0.6'
+    runtime          group:'ch.qos.logback'     , name:'logback-classic'     , version:'1.0.6'
     // if you rather use slf4j-simple as a slf4j-api implementation, comment or remove the previous entry 'logback' and add the following:
     //runtime          group:'org.slf4j'          , name:'slf4j-simple', version:'1.6.6'
     
