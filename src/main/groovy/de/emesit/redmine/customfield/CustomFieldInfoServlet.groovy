@@ -1,7 +1,8 @@
 package de.emesit.redmine.customfield
 
-
-import java.io.IOException;
+import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED
+import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND
+import static javax.servlet.http.HttpServletResponse.SC_OK
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
 
 /**
  * <p>
@@ -126,6 +128,7 @@ class CustomFieldInfoServlet extends HttpServlet {
     }
     
     
+    
     @Override
     void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String location = request.getParameter(PARAM_LOCATION)
@@ -143,8 +146,15 @@ class CustomFieldInfoServlet extends HttpServlet {
                     List<CustomField> customFieldsOfType = redmineDatabase.getCustomFields(typeParam, reload)
                     response.contentType = RESPONSE_MIME_TYPE
                     response.outputStream << CustomField.toXml(customFieldsOfType)
+                    response.status = SC_OK
+                } else {
+                    response.status = SC_UNAUTHORIZED
                 }
+            } else {
+                response.status = SC_NOT_FOUND;
             }
+        } else {
+            response.status = SC_NOT_FOUND;
         }
     }
     
